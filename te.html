@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem Especial</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif; /* Fonte do texto */
+            text-align: center; /* Alinhamento do texto */
+            overflow: hidden; /* Para evitar barras de rolagem */
+            background-color: #ff0000; /* Fundo vermelho */
+            color: #ffd700; /* Texto dourado */
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #ffd700; /* Título dourado */
+            font-size: 2em; /* Tamanho do título */
+            margin-bottom: 20px; /* Espaço abaixo do título */
+            position: relative;
+            z-index: 1;
+        }
+
+        p {
+            color: #ffd700; /* Texto dourado */
+            font-size: 1.2em; /* Tamanho do texto */
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Animação de corações em movimento */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .heart {
+            background-color: transparent;
+            color: #ffd700; /* Cor dos emojis (dourada) */
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            animation: float 5s linear infinite;
+            transform-origin: center bottom;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-100vh) rotate(45deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        /* Tela inicial */
+        .start-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 0, 0, 0.8); /* Fundo vermelho com transparência */
+            color: #ffd700;
+            z-index: 2;
+        }
+
+        .start-button {
+            background-color: #ffd700; /* Fundo dourado */
+            color: #ff0000; /* Texto vermelho */
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            margin-top: 20px;
+        }
+
+        .background {
+            display: none;
+        }
+
+        /* Estilo da segunda tela */
+        .second-screen {
+            display: none;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="start-screen" id="startScreen">
+        <h1>Você me ama?</h1>
+        <button class="start-button" onclick="startGame()">Sim</button>
+    </div>
+
+    <div class="background" id="background"></div>
+
+    <div class="second-screen" id="secondScreen">
+        <h1>Só pra dizer que te amo muito ❤️</h1>
+        <p>Olá, amor! Esta é uma página feita especialmente para você. Espero que goste! ❤️</p>
+<p>Amor, eu não tenho nem palavras pra dizer o quanto eu me sinto sortudo de ter você na minha vida. Às vezes, eu tô lá, de bobeira, vendo uma foto sua e me pergunto se isso tudo é real mesmo, sabia? Não passava pela minha cabeça que ia namorar uma mulher tão incrível assim.
+
+Tenho certeza de que você é a minha pessoinha, aquela que eu nem sabia que tava faltando na minha vida, mas que eu precisava muito. Agradeço a Deus por ter colocado a gente junto, e logo com você, que fez desse ano um monte de aprendizados e experiências que eu nem imaginava viver.
+
+Eu tô completamente apaixonado, sério. Você é tipo o meu sol, só que melhor, porque eu não canso de te admirar e sentir uma atração louca por você.
+
+Você trouxe uns sonhos que eu nem sabia que queria. A gente tá construindo um futuro juntos, e minha vontade agora é usar a nossa maquina de lava e seca. Confesso que tá sendo um desafio, mas olha, um desafio maravilhoso, principalmente contigo ao meu lado, hehe.
+
+Te amo demais e sei que vou te amar enquanto eu tiver fôlego. Deus caprichou quando me deu você, e eu me sinto sortudo demais. A nossa história é e vai continuar sendo a mais linda que já aconteceu na terra.
+
+Beijos apaixonados,.
+        <!-- Adicione mais elementos HTML conforme necessário -->
+    </div>
+
+    <script>
+        function startGame() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('background').style.display = 'block';
+            document.getElementById('secondScreen').style.display = 'block';
+            
+            for (let i = 0; i < 200; i++) {
+                const heart = createEmoji("❤️");
+                document.getElementById('background').appendChild(heart);
+            }
+        }
+
+        function createEmoji(emoji) {
+            const element = document.createElement("div");
+            element.className = "heart";
+            element.innerHTML = emoji;
+            element.style.left = Math.random() * 100 + "vw";
+            element.style.top = Math.random() * 100 + "vh";
+            element.style.animationDuration = Math.random() * 3 + 2 + "s";
+            return element;
+        }
+    </script>
+</body>
+</html>
